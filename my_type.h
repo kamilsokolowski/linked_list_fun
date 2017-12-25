@@ -13,7 +13,7 @@ typedef struct my_type
     } data;
 } my_type;
 
-void my_type test; (my_type*, int);
+void set_data_by_user (my_type*, int);
 void print_data (my_type);
 int get_int (my_type);
 float get_float (my_type);

@@ -10,9 +10,10 @@ int main(void)
 
     puts("\t Custom test");
     char *buff = (char*) malloc(sizeof(char)*255);
+    puts("Say something");
     scanf("%s", buff);
     set_word(&test, buff);
-    printf("%s", get_word(test));
+    printf("Your word: %s \n", get_word(test));
 
     puts("\t List test");
     add_to_tail(&my_list, 3);
@@ -31,7 +32,7 @@ int main(void)
     test = remove_element(&my_list,255);
     print_data(test);
     puts("\n\t");
-
+    puts("List: ");
     print_from_head(&my_list);
 
     return 0;

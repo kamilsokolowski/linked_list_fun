@@ -1,7 +1,8 @@
 #ifndef MY_LIST_H_INCLUDED
 #define MY_LIST_H_INCLUDED
 
-typedef struct node {
+typedef struct node
+{
     my_type data;
     struct node *next;
     struct node *prev;

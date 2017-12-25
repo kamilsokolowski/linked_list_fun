@@ -8,6 +8,12 @@ typedef struct node
     struct node *prev;
 } node;
 
+typedef struct linked_list
+{
+    int type;
+    node *head;
+} linked_list;
+
 node *get_last_node(node**);
 node *get_node(node**, int);
 my_type *get_data(node*);

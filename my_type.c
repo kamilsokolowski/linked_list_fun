@@ -37,16 +37,16 @@ void print_data (my_type Var)
     switch(Var.type)
     {
     case 0:
-        printf("%d \n", Var.data.intiger);
+        printf("%d ", Var.data.intiger);
         break;
     case 1:
-        printf("%f \n", Var.data.floater);
+        printf("%f ", Var.data.floater);
         break;
     case 2:
-        printf("%.2f \n", Var.data.doubler);
+        printf("%.2f ", Var.data.doubler);
         break;
     case 3:
-        printf("%s \n", Var.data.word);
+        printf("%s ", Var.data.word);
         break;
     default:
         puts("My_type: error 2");

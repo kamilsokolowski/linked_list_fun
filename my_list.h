@@ -10,8 +10,9 @@ typedef struct node
 
 node *get_last_node(node**);
 node *get_node(node**, int);
-void add_to_head(node**, int);
-void add_to_tail(node**, int);
+my_type *get_data(node*);
+void add_to_head(node**);
+void add_to_tail(node**);
 my_type remove_from_head(node**);
 my_type remove_from_tail(node**);
 my_type remove_element(node**, int);

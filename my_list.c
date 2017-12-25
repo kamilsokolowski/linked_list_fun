@@ -31,19 +31,22 @@ node *get_node(node** my_list, int element)
         puts("This element doesn't exist");
         return current;
     }
-    for(i = 1; i != element; ++i)
+    for(i = 0; i != element; ++i)
     {
         current = current -> next;
     }
     return current;
 }
 
-void add_to_head(node** my_list, int type)
+my_type *get_data(node* target) {
+    return &target->data;
+}
+
+void add_to_head(node** my_list)
 {
     node *new_node = (node*) malloc(sizeof(node));
     new_node->next = NULL;
     new_node->prev = NULL;
-    set_data_by_user(&new_node->data, type);
     if (*my_list == NULL)
         *my_list = new_node;
     else
@@ -54,12 +57,11 @@ void add_to_head(node** my_list, int type)
     }
 }
 
-void add_to_tail(node** my_list, int type)
+void add_to_tail(node** my_list)
 {
     node *new_node = (node*) malloc(sizeof(node));
     new_node->next = NULL;
     new_node->prev = NULL;
-    set_data_by_user(&new_node->data, type);
     if (*my_list == NULL)
         *my_list = new_node;
     else
@@ -118,10 +120,11 @@ my_type remove_element(node** my_list, int element)
         puts("nothing to do here");
         return;
     }
-    else if(element == len)
-        return remove_from_tail(&my_list);
+    else if(element == len){
+        return remove_from_tail(my_list);
+    }
     else if (element == 1)
-        return remove_from_head(&my_list);
+        return remove_from_head(my_list);
     else
     {
         if(current != NULL)
@@ -176,7 +179,7 @@ int length_list (node** my_list)
 {
     int counter = 0;
     node *tmp = *my_list;
-    while(tmp != NULL)
+    while(tmp -> next != NULL)
     {
         tmp = tmp -> next;
         counter++;

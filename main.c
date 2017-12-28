@@ -5,10 +5,10 @@
 
 int main(void)
 {
-    int i, len = 5, data;
-    linked_list my_list;
-    my_list.type = 0;
-    my_list.head = NULL;
+    int i, len, data;
+    node **list = (node**) malloc(sizeof(node*));
+    node *head = NULL;
+    *list = head;
     my_type test;
     node *current;
 
@@ -19,18 +19,21 @@ int main(void)
     set_word(&test, buff);
     printf("Your word: %s \n", get_word(test));
 
+    puts("How long your list should be ?");
+    scanf("%d", &len);
+
     puts("\t List test");
     // Filling list from tail
     /*
     puts("Filling from tail");
 
     for(i = 0; i < len; ++i)
-        add_to_tail(&my_list.head);
+        add_to_tail(list);
 
     for (i = len - 1; i >= 0; --i) {
-        current = get_node(&my_list.head, i);
+        current = get_node(list, i);
         if(current)
-            set_data_by_user(get_data(current), my_list.type);
+            set_data_by_user(get_data(current), 0);
         else
             puts("Something goes wrong");
     }
@@ -40,27 +43,27 @@ int main(void)
     puts("Filling from head");
     for (i = 0; i < len; ++i)
     {
-        add_to_head(&my_list.head);
-        current = get_node(&my_list.head, 0);
+        add_to_head(list);
+        current = get_node(list, 0);
         if(current)
-            set_data_by_user(get_data(current), my_list.type);
+            set_data_by_user(get_data(current), 0);
         else
             puts("Something goes wrong");
     }
 
     puts("\n\t");
-    print_data(remove_element(&my_list.head, 2));
-    print_data(remove_element(&my_list.head, 3));
+    print_data(remove_element(list, 2));
+    print_data(remove_element(list, 3));
     puts("\n What will happen if we try to take not existing node ?");
-    test = remove_element(&my_list.head, 255);
+    test = remove_element(list, 255);
     print_data(test);
     puts("\n\t");
 
     puts("List: ");;
     puts("Prinitng from tail: ");
-    print_from_tail(&my_list.head);
+    print_from_tail(list);
     puts("\nPrinitng from head: ");
-    print_from_head(&my_list.head);
+    print_from_head(list);
 
     return 0;
 }

@@ -115,6 +115,7 @@ my_type remove_element(node** my_list, int element)
     int len = length_list(my_list);
     node *current = get_node(my_list, element);
     my_type result;
+
     if (*my_list == NULL)
     {
         puts("nothing to do here");
@@ -178,7 +179,8 @@ void print_from_tail(node** my_list)
 int length_list (node** my_list)
 {
     int counter = 0;
-    node *tmp = *my_list;
+    node *tmp = (node*) malloc(sizeof(node));
+    tmp = *my_list;
     while(tmp -> next != NULL)
     {
         tmp = tmp -> next;

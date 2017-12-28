@@ -6,9 +6,13 @@
 node *get_last_node(node** my_list)
 {
     node *current = *my_list;
-    while (current -> next != NULL)
-        current = current -> next;
-    return current;
+    if(current != NULL){
+        while (current -> next != NULL)
+            current = current -> next;
+        return current;
+    }
+    else
+        return NULL;
 }
 
 node *get_node(node** my_list, int element)
@@ -84,7 +88,8 @@ my_type remove_from_head(node** my_list)
     else
     {
         *my_list = current -> next;
-        (*my_list) -> prev = NULL;
+        if(*my_list != NULL)
+            (*my_list) -> prev = NULL;
     }
     result = current -> data;
     free(current);
@@ -93,18 +98,15 @@ my_type remove_from_head(node** my_list)
 
 my_type remove_from_tail(node** my_list)
 {
-    node *current = get_last_node(my_list), *last;
-    my_type result;
-    if (*my_list == NULL)
-    {
+    if (*my_list == NULL) {
         puts("nothing to do here");
         return;
     }
-    else
-    {
-        last = current -> prev;
+    node *current = get_last_node(my_list), *last;
+    my_type result;
+    last = current -> prev;
+    if(last != NULL)
         last -> next = NULL;
-    }
     result = current -> data;
     free(current);
     return result;
@@ -112,16 +114,14 @@ my_type remove_from_tail(node** my_list)
 
 my_type remove_element(node** my_list, int element)
 {
-    int len = length_list(my_list);
-    node *current = get_node(my_list, element);
-    my_type result;
-
-    if (*my_list == NULL)
-    {
+    if (*my_list == NULL) {
         puts("nothing to do here");
         return;
     }
-    else if(element == len){
+    int len = length_list(my_list);
+    my_type result;
+    node *current = get_node(my_list, element);
+    if(element == len){
         return remove_from_tail(my_list);
     }
     else if (element == 1)
@@ -179,12 +179,14 @@ void print_from_tail(node** my_list)
 int length_list (node** my_list)
 {
     int counter = 0;
-    node *tmp = (node*) malloc(sizeof(node));
-    tmp = *my_list;
-    while(tmp -> next != NULL)
-    {
-        tmp = tmp -> next;
-        counter++;
+    if(*my_list != NULL) {
+        node *tmp = (node*) malloc(sizeof(node));
+        tmp = *my_list;
+        while(tmp -> next != NULL)
+        {
+            tmp = tmp -> next;
+            counter++;
+        }
     }
     return counter;
 }

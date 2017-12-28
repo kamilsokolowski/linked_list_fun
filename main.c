@@ -52,7 +52,8 @@ int main(void)
     }
 
     puts("\n\t");
-    print_data(remove_element(list, 2));
+    print_data(remove_from_head(list));
+    print_data(remove_from_tail(list));
     print_data(remove_element(list, 3));
     puts("\n What will happen if we try to take not existing node ?");
     test = remove_element(list, 255);
